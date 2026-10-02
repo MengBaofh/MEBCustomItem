@@ -1,0 +1,74 @@
+# 自定义配方配置文件
+
+recipes:
+  # 工作台合成配方
+  crafting:
+    flame_sword:
+      type: "shaped"           # 有序合成
+      shape:
+        - "DFD"
+        - "DSD"
+        - " B "
+      ingredients:
+        D: "minecraft:diamond"
+        F: "minecraft:blaze_powder"
+        S: "minecraft:diamond_sword"
+        B: "minecraft:stick"
+      result:
+        item_id: "flame_sword"
+        count: 1
+
+    healing_apple:
+      type: "shapeless"        # 无序合成
+      ingredients:
+        - "minecraft:golden_apple"
+        - "minecraft:gold_ingot"
+        - "minecraft:gold_ingot"
+        - "minecraft:gold_ingot"
+        - "minecraft:glowstone_dust"
+        - "minecraft:glowstone_dust"
+      result:
+        item_id: "healing_apple"
+        count: 1
+
+    speed_boots:
+      type: "shaped"
+      shape:
+        - "F F"
+        - "B B"
+        - "   "
+      ingredients:
+        F: "minecraft:feather"
+        B: "minecraft:diamond_boots"
+      result:
+        item_id: "speed_boots"
+        count: 1
+
+  # 熔炉配方
+  smelting: {}
+
+# 怪物掉落配置
+mob_drops:
+  # 僵尸掉落
+  zombie:
+    - item_id: "flame_sword"
+      chance: 0.5              # 0.5% 掉落几率
+      min: 1
+      max: 1
+
+  # 烈焰人掉落
+  blaze:
+    - item_id: "healing_apple"
+      chance: 5                # 5% 掉落几率
+      min: 1
+      max: 2
+
+# 方块掉落配置
+block_drops:
+  # 钻石矿石掉落
+  diamond_ore:
+    - item_id: "healing_apple"
+      chance: 2                # 2% 掉落几率
+      min: 1
+      max: 1
+      require_tool: true       # 需要使用工具

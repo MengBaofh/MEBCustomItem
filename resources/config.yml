@@ -1,0 +1,28 @@
+# MEBCustomItem 主配置文件
+
+# 插件设置
+settings:
+  # 语言
+  language: "zh_CN"
+
+  # 是否启用配方系统
+  enable_recipes: true
+
+  # 是否启用掉落系统
+  enable_drops: true
+
+  # 物品耐久损耗倍率
+  durability_multiplier: 1.0
+
+  # 效果冷却时间倍率
+  cooldown_multiplier: 1.0
+
+# GUI设置
+gui:
+  # 列表每页显示数量
+  items_per_page: 12
+
+  # 按钮文字颜色（避免灰色§7和§8）
+  button_text_color: "§f"
+  title_color: "§l§b"
+  description_color: "§e"

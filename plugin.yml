@@ -1,0 +1,20 @@
+name: MEBCustomItem
+main: MengBao\MEBCustomItem\Main
+version: 1.0.0
+api:
+- 5.0.0
+load: POSTWORLD
+softdepend: [MEBForms, MEBSociety, MEBMobAI]
+author: MengBao
+website: https://github.com/MengBaofh/MEBCustomItem
+description: A custom item plugin with custom models, effects, recipes, drops and GUI management.
+commands:
+ mebci:
+  description: Managing MEB custom items
+  permission: mebcustomitem.command
+  usage: '/mebci help'
+
+permissions:
+ mebcustomitem.command:
+  default: op
+  description: Permission to use all MEBCustomItem commands

@@ -1,0 +1,142 @@
+# 自定义物品配置文件
+# 物品ID必须唯一，建议使用小写英文+下划线命名
+
+items:
+  # 示例：烈焰之剑
+  flame_sword:
+    # 显示名称
+    name: "§c§l烈焰之剑"
+
+    # 物品描述
+    lore:
+      - "§7一把被烈焰附魔的神剑"
+      - "§e长按使用释放火球"
+      - "§c攻击附带燃烧效果"
+
+    # 基础物品（原版物品ID或材质标识符）
+    # 可以是原版物品如 "minecraft:diamond_sword"
+    # 也可以是自定义材质标识符
+    base_item: "minecraft:diamond_sword"
+
+    # 是否为完全自定义物品（需要自定义模型）
+    custom_model: false
+
+    # 自定义材质/模型路径（当custom_model为true时）
+    # 需要配合资源包使用
+    texture_path: ""
+    model_path: ""
+
+    # 物品数量
+    count: 1
+
+    # 附魔列表
+    enchantments:
+      - id: 9    # 锋利
+        level: 5
+      - id: 13   # 火焰附加
+        level: 2
+
+    # 自定义属性
+    attributes:
+      damage: 15              # 额外伤害
+      durability: 2000        # 自定义耐久度（-1为不限）
+      attack_speed: 1.6       # 攻击速度
+
+    # 特殊效果
+    effects:
+      # 使用效果（长按使用）
+      on_use:
+        enabled: true
+        type: "projectile"     # 效果类型：projectile(发射物), heal(治疗), effect(药水效果), teleport(传送)
+        projectile: "fireball"
+        cooldown: 5            # 冷却时间（秒）
+        cost:
+          type: "durability"   # 消耗类型：durability(耐久), item(物品), none(无消耗)
+          value: 10
+        message: "§e你释放了火球！"
+
+      # 攻击时触发
+      on_attack:
+        enabled: true
+        type: "effect"
+        target: "enemy"        # 目标：enemy(敌人), self(自己), both(双方)
+        effects:
+          - effect_id: 12      # 燃烧效果（凋零效果ID）
+            duration: 60       # 持续时间（tick）
+            amplifier: 1       # 等级
+
+      # 持有时效果（手持或装备）
+      on_hold:
+        enabled: false
+        type: "effect"
+        target: "self"
+        effects: []
+
+    # 获取方式
+    obtainable:
+      craft: true              # 可合成
+      drop: true               # 可掉落
+      shop: true               # 可在商店购买
+      price: 10000             # 购买价格（需要MEBSociety）
+      sell_price: 5000         # 出售价格
+
+  # 示例：治愈苹果
+  healing_apple:
+    name: "§b§l治愈苹果"
+    lore:
+      - "§7食用后立即恢复生命"
+      - "§a+10 ♥"
+    base_item: "minecraft:golden_apple"
+    custom_model: false
+    count: 1
+    enchantments: []
+    attributes: {}
+    effects:
+      on_consume:
+        enabled: true
+        type: "heal"
+        amount: 20             # 恢复10颗心
+        effects:
+          - effect_id: 10      # 生命恢复
+            duration: 200
+            amplifier: 2
+          - effect_id: 11      # 伤害吸收
+            duration: 600
+            amplifier: 1
+        message: "§a你感觉身体充满了活力！"
+    obtainable:
+      craft: true
+      drop: false
+      shop: true
+      price: 500
+      sell_price: 250
+
+  # 示例：疾风之靴
+  speed_boots:
+    name: "§b§l疾风之靴"
+    lore:
+      - "§7穿上它，如风般奔跑"
+      - "§e速度 +50%"
+    base_item: "minecraft:diamond_boots"
+    custom_model: false
+    count: 1
+    enchantments:
+      - id: 2                  # 摔落保护
+        level: 4
+    attributes:
+      speed_multiplier: 1.5
+    effects:
+      on_hold:
+        enabled: true
+        type: "effect"
+        target: "self"
+        effects:
+          - effect_id: 1       # 速度效果
+            duration: -1       # -1表示持续持有期间
+            amplifier: 2
+    obtainable:
+      craft: true
+      drop: false
+      shop: true
+      price: 5000
+      sell_price: 2500
